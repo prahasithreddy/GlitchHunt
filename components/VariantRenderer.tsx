@@ -5,7 +5,6 @@ import {
   Home, ArrowUpRight, Globe, BarChart2, MessageCircle, Settings,
   Menu, Share2, Bookmark, X, Image as ImageIcon, Video, ShieldAlert
 } from 'lucide-react';
-import { CopySuggestion } from '../services/geminiService';
 
 interface VariantRendererProps {
   email: string;
@@ -83,7 +82,10 @@ const features = [
   }
 ];
 
-export const VariantRenderer: React.FC<VariantRendererProps> = ({ copy, email, setEmail, onStartHunting }) => {
+export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmail, onStartHunting }) => {
+  // Default copy text
+  const headline = "Where Bugs Go To Die.";
+  const subheadline = "The front page of the broken internet. Join thousands of users reporting and fixing glitches in your favorite apps.";
   
   const handleStartHuntingClick = () => {
     if (email) {
@@ -369,10 +371,10 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ copy, email, s
       <header className="max-w-6xl mx-auto px-6 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
         <div>
           <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
-            {copy.headline}
+            {headline}
           </h1>
           <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-            {copy.subheadline}
+            {subheadline}
           </p>
           
           <div className="flex flex-col gap-4 mb-8">
