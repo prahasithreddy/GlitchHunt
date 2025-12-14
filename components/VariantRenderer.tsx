@@ -8,7 +8,6 @@ import {
 import { CopySuggestion } from '../services/geminiService';
 
 interface VariantRendererProps {
-  copy: CopySuggestion;
   email: string;
   setEmail: (email: string) => void;
   onStartHunting: () => void;
@@ -18,7 +17,7 @@ interface VariantRendererProps {
 const mockRedditIssues = [
   { 
     id: 1, 
-    subreddit: "r/stripe", 
+    subreddit: "g/stripe", 
     user: "u/payment_dev", 
     time: "4h ago", 
     title: "Stripe payment modal freezes on iOS Safari 17 when dark mode is toggled", 
@@ -30,7 +29,7 @@ const mockRedditIssues = [
   },
   { 
     id: 2, 
-    subreddit: "r/notion", 
+    subreddit: "g/notion", 
     user: "u/productivity_guru", 
     time: "6h ago", 
     title: "PDF export cuts off wide tables and images in landscape mode", 
@@ -42,7 +41,7 @@ const mockRedditIssues = [
   },
   { 
     id: 3, 
-    subreddit: "r/spotify", 
+    subreddit: "g/spotify", 
     user: "u/music_lover", 
     time: "12h ago", 
     title: "Web player audio stutter on high latency connections (reproducible)", 
@@ -54,7 +53,7 @@ const mockRedditIssues = [
   },
    { 
     id: 4, 
-    subreddit: "r/figma", 
+    subreddit: "g/figma", 
     user: "u/designer_steve", 
     time: "1d ago", 
     title: "Auto-layout constraints break when nesting 4+ levels deep", 
@@ -149,7 +148,7 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ copy, email, s
              </div>
              
              <div className="px-2 space-y-1 hidden md:block">
-                 {['r/startups', 'r/webdev', 'r/reactjs', 'r/saas'].map(sub => (
+                 {['g/startups', 'g/webdev', 'g/reactjs', 'g/saas'].map(sub => (
                      <div key={sub} className="px-4 py-1.5 hover:bg-slate-50 rounded-md cursor-pointer flex items-center gap-2 text-slate-600">
                          <div className="w-5 h-5 rounded-full bg-slate-200"></div>
                          <span>{sub}</span>
@@ -296,7 +295,7 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ copy, email, s
                                 <div className="w-10 h-10 bg-white p-1 rounded-full">
                                     <div className="w-full h-full bg-indigo-600 rounded-full flex items-center justify-center text-white"><Bug className="w-5 h-5"/></div>
                                 </div>
-                                <span className="font-bold text-slate-800 text-sm mt-3">r/GlitchHunt</span>
+                                <span className="font-bold text-slate-800 text-sm mt-3">g/GlitchHunt</span>
                             </div>
                             <p className="text-xs text-slate-600 mb-3 leading-relaxed">
                                 The official community for bug hunters and QA professionals. Report bugs, earn bounties, and improve the web.
@@ -322,9 +321,9 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ copy, email, s
                         </div>
                         <div>
                             {[
-                                { title: "New bounty program for Fintech apps announced", sub: "r/Bounties", up: 45 },
-                                { title: "How to inspect WebSocket frames in Chrome?", sub: "r/webdev", up: 12 },
-                                { title: "Critical auth bypass found in popular library", sub: "r/netsec", up: 892 },
+                                { title: "New bounty program for Fintech apps announced", sub: "g/Bounties", up: 45 },
+                                { title: "How to inspect WebSocket frames in Chrome?", sub: "g/webdev", up: 12 },
+                                { title: "Critical auth bypass found in popular library", sub: "g/netsec", up: 892 },
                             ].map((item, i) => (
                                 <div key={i} className="px-3 py-3 border-b border-slate-100 last:border-0 hover:bg-slate-50 cursor-pointer flex gap-3">
                                     {/* Thumbnail Placeholder */}
@@ -477,7 +476,7 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ copy, email, s
                  <div className="w-3 h-3 rounded-full bg-slate-200 group-hover:bg-green-400 transition-colors"></div>
                </div>
                <div className="flex-1 bg-slate-50 px-3 py-1.5 rounded-lg text-xs text-slate-500 flex items-center justify-center border border-slate-200 font-mono">
-                  glitchhunt.com/r/all
+                  glitchhunt.com/g/all
                </div>
                <div className="w-16"></div>
              </div>

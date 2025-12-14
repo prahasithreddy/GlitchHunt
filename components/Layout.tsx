@@ -39,7 +39,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, onNavigate, onRegister
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-2">
             <span className="text-xl font-bold text-indigo-600">GlitchHunt</span>
-            <span className="text-sm text-slate-500">© 2024 GlitchHunt Inc.</span>
+            <span className="text-sm text-slate-500">© 2025 GlitchHunt Inc.</span>
           </div>
           <div className="flex gap-8 text-sm text-slate-600 font-medium">
              <button onClick={() => onNavigate('privacy')} className="hover:text-indigo-600 transition-colors">Privacy Policy</button>
