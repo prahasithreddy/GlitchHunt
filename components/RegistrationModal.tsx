@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { X, CheckCircle, Loader2, User, Mail, Calendar, Search, ChevronDown } from 'lucide-react';
+import { X, CheckCircle, Loader2, User, Mail, Calendar, Search, ChevronDown, AlertCircle } from 'lucide-react';
+import { saveRegistration, RegistrationData } from '../services/supabaseService';
 
 interface RegistrationModalProps {
   isOpen: boolean;
@@ -8,28 +9,54 @@ interface RegistrationModalProps {
 }
 
 export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, prefilledEmail }) => {
-  const [email, setEmail] = useState(prefilledEmail);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: prefilledEmail,
+    dateOfBirth: '',
+    referralSource: '',
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   // Update local email when prefilledEmail changes or modal opens
   useEffect(() => {
     if (isOpen) {
-      setEmail(prefilledEmail);
-      setIsSuccess(false); // Reset success state on open
+      setFormData(prev => ({ ...prev, email: prefilledEmail }));
+      setIsSuccess(false);
       setIsSubmitting(false);
+      setError(null);
     }
   }, [isOpen, prefilledEmail]);
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    const registrationData: RegistrationData = {
+      name: formData.name,
+      email: formData.email,
+      date_of_birth: formData.dateOfBirth,
+      referral_source: formData.referralSource,
+    };
+
+    const result = await saveRegistration(registrationData);
     
     setIsSubmitting(false);
-    setIsSuccess(true);
+
+    if (result.success) {
+      setIsSuccess(true);
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        dateOfBirth: '',
+        referralSource: '',
+      });
+    } else {
+      setError(result.error || 'Registration failed. Please try again.');
+    }
   };
 
   if (!isOpen) return null;
@@ -58,7 +85,7 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
             </div>
             <h3 className="text-2xl font-bold text-slate-900 mb-2">Registration Complete!</h3>
             <p className="text-slate-600 mb-8 max-w-xs mx-auto">
-              Welcome to the hunt. We've sent a confirmation email to <span className="font-semibold text-slate-900">{email}</span>.
+              Welcome to the hunt. We've sent a confirmation email to <span className="font-semibold text-slate-900">{formData.email}</span>.
             </p>
             <button 
               onClick={onClose}
@@ -83,6 +110,14 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
             
             <form onSubmit={handleFormSubmit} className="px-8 pb-8 space-y-5">
               
+              {/* Error Message */}
+              {error && (
+                <div className="bg-red-50 border border-red-200 rounded-xl p-4 flex items-start gap-3 animate-in fade-in slide-in-from-top-2">
+                  <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+                  <p className="text-sm text-red-800 font-medium">{error}</p>
+                </div>
+              )}
+
               {/* Full Name */}
               <div className="space-y-1.5">
                 <label htmlFor="name" className="text-sm font-semibold text-slate-700 ml-1">Full Name</label>
@@ -94,6 +129,8 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
                     required
                     id="name"
                     type="text" 
+                    value={formData.name}
+                    onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
                     placeholder="Jane Doe"
                     className="w-full bg-white text-slate-900 border border-slate-200 rounded-xl pl-11 pr-4 py-3 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all placeholder:text-slate-400 hover:border-slate-300 shadow-sm"
                   />
@@ -111,8 +148,8 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
                     required
                     id="modal-email"
                     type="email" 
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={formData.email}
+                    onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                     placeholder="name@company.com"
                     className={`w-full text-slate-900 border rounded-xl pl-11 pr-4 py-3 outline-none transition-all shadow-sm ${
                         prefilledEmail 
@@ -136,6 +173,8 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
                         required
                         id="dob"
                         type="date" 
+                        value={formData.dateOfBirth}
+                        onChange={(e) => setFormData(prev => ({ ...prev, dateOfBirth: e.target.value }))}
                         className="w-full bg-white text-slate-900 border border-slate-200 rounded-xl pl-11 pr-4 py-3 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all hover:border-slate-300 shadow-sm text-sm"
                         />
                     </div>
@@ -151,6 +190,8 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
                         <select 
                         id="source"
                         required
+                        value={formData.referralSource}
+                        onChange={(e) => setFormData(prev => ({ ...prev, referralSource: e.target.value }))}
                         className="w-full bg-white text-slate-900 border border-slate-200 rounded-xl pl-11 pr-10 py-3 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all appearance-none hover:border-slate-300 shadow-sm text-sm"
                         >
                         <option value="">Select...</option>
