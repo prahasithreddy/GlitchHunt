@@ -33,7 +33,7 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
     e.preventDefault();
     setIsSubmitting(true);
     setError(null);
-    
+
     const registrationData: RegistrationData = {
       name: formData.name,
       email: formData.email,
@@ -42,7 +42,7 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
     };
 
     const result = await saveRegistration(registrationData);
-    
+
     setIsSubmitting(false);
 
     if (result.success) {
@@ -64,14 +64,14 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       {/* Backdrop */}
-      <div 
-        className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" 
+      <div
+        className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"
         onClick={onClose}
       />
-      
+
       {/* Modal Content */}
       <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden animate-in fade-in zoom-in duration-200 ring-1 ring-slate-900/5">
-        <button 
+        <button
           onClick={onClose}
           className="absolute top-4 right-4 p-2 text-slate-400 hover:bg-slate-50 hover:text-slate-600 rounded-full transition-all z-10"
         >
@@ -85,9 +85,9 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
             </div>
             <h3 className="text-2xl font-bold text-slate-900 mb-2">Registration Complete!</h3>
             <p className="text-slate-600 mb-8 max-w-xs mx-auto">
-              Welcome to the hunt. We've sent a confirmation email to <span className="font-semibold text-slate-900">{formData.email}</span>.
+              Welcome to the hunt. You will be the first to know when the hunt begins.
             </p>
-            <button 
+            <button
               onClick={onClose}
               className="w-full bg-slate-900 text-white font-bold py-3.5 rounded-xl hover:bg-slate-800 transition-all shadow-lg shadow-slate-200"
             >
@@ -97,19 +97,19 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
         ) : (
           <>
             <div className="pt-8 px-8 pb-6 bg-white">
-               <div className="flex items-center gap-3 mb-2">
-                 <div className="p-2.5 bg-indigo-50 rounded-xl border border-indigo-100">
-                    <User className="w-5 h-5 text-indigo-600" />
-                 </div>
-                 <div>
-                    <h3 className="text-xl font-bold text-slate-900 leading-none">Join the Hunt</h3>
-                    <p className="text-sm text-slate-500 mt-1">Create your account to start tracking bugs.</p>
-                 </div>
-               </div>
+              <div className="flex items-center gap-3 mb-2">
+                <div className="p-2.5 bg-indigo-50 rounded-xl border border-indigo-100">
+                  <User className="w-5 h-5 text-indigo-600" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 leading-none">Join the Hunt</h3>
+                  <p className="text-sm text-slate-500 mt-1">Create your account to start tracking bugs.</p>
+                </div>
+              </div>
             </div>
-            
+
             <form onSubmit={handleFormSubmit} className="px-8 pb-8 space-y-5">
-              
+
               {/* Error Message */}
               {error && (
                 <div className="bg-red-50 border border-red-200 rounded-xl p-4 flex items-start gap-3 animate-in fade-in slide-in-from-top-2">
@@ -125,10 +125,10 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
                   <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
                     <User className="h-5 w-5 text-slate-400 group-focus-within:text-indigo-500 transition-colors" />
                   </div>
-                  <input 
+                  <input
                     required
                     id="name"
-                    type="text" 
+                    type="text"
                     value={formData.name}
                     onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
                     placeholder="Jane Doe"
@@ -144,18 +144,17 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
                   <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
                     <Mail className="h-5 w-5 text-slate-400 group-focus-within:text-indigo-500 transition-colors" />
                   </div>
-                  <input 
+                  <input
                     required
                     id="modal-email"
-                    type="email" 
+                    type="email"
                     value={formData.email}
                     onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                     placeholder="name@company.com"
-                    className={`w-full text-slate-900 border rounded-xl pl-11 pr-4 py-3 outline-none transition-all shadow-sm ${
-                        prefilledEmail 
-                        ? 'bg-slate-50 border-slate-200 text-slate-500 cursor-not-allowed' 
-                        : 'bg-white border-slate-200 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 hover:border-slate-300'
-                    }`}
+                    className={`w-full text-slate-900 border rounded-xl pl-11 pr-4 py-3 outline-none transition-all shadow-sm ${prefilledEmail
+                      ? 'bg-slate-50 border-slate-200 text-slate-500 cursor-not-allowed'
+                      : 'bg-white border-slate-200 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 hover:border-slate-300'
+                      }`}
                     readOnly={!!prefilledEmail}
                   />
                 </div>
@@ -164,66 +163,66 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
               <div className="grid grid-cols-2 gap-4">
                 {/* Date of Birth */}
                 <div className="space-y-1.5">
-                    <label htmlFor="dob" className="text-sm font-semibold text-slate-700 ml-1">Date of Birth</label>
-                    <div className="relative group">
-                        <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                            <Calendar className="h-5 w-5 text-slate-400 group-focus-within:text-indigo-500 transition-colors" />
-                        </div>
-                        <input 
-                        required
-                        id="dob"
-                        type="date" 
-                        value={formData.dateOfBirth}
-                        onChange={(e) => setFormData(prev => ({ ...prev, dateOfBirth: e.target.value }))}
-                        className="w-full bg-white text-slate-900 border border-slate-200 rounded-xl pl-11 pr-4 py-3 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all hover:border-slate-300 shadow-sm text-sm"
-                        />
+                  <label htmlFor="dob" className="text-sm font-semibold text-slate-700 ml-1">Date of Birth</label>
+                  <div className="relative group">
+                    <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                      <Calendar className="h-5 w-5 text-slate-400 group-focus-within:text-indigo-500 transition-colors" />
                     </div>
+                    <input
+                      required
+                      id="dob"
+                      type="date"
+                      value={formData.dateOfBirth}
+                      onChange={(e) => setFormData(prev => ({ ...prev, dateOfBirth: e.target.value }))}
+                      className="w-full bg-white text-slate-900 border border-slate-200 rounded-xl pl-11 pr-4 py-3 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all hover:border-slate-300 shadow-sm text-sm"
+                    />
+                  </div>
                 </div>
 
-                 {/* Source */}
-                 <div className="space-y-1.5">
-                    <label htmlFor="source" className="text-sm font-semibold text-slate-700 ml-1">Referral</label>
-                    <div className="relative group">
-                        <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                            <Search className="h-5 w-5 text-slate-400 group-focus-within:text-indigo-500 transition-colors" />
-                        </div>
-                        <select 
-                        id="source"
-                        required
-                        value={formData.referralSource}
-                        onChange={(e) => setFormData(prev => ({ ...prev, referralSource: e.target.value }))}
-                        className="w-full bg-white text-slate-900 border border-slate-200 rounded-xl pl-11 pr-10 py-3 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all appearance-none hover:border-slate-300 shadow-sm text-sm"
-                        >
-                        <option value="">Select...</option>
-                        <option value="social">Social Media</option>
-                        <option value="search">Search Engine</option>
-                        <option value="friend">Friend</option>
-                        <option value="blog">Blog</option>
-                        <option value="other">Other</option>
-                        </select>
-                         <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                            <ChevronDown className="h-4 w-4 text-slate-400" />
-                        </div>
+                {/* Source */}
+                <div className="space-y-1.5">
+                  <label htmlFor="source" className="text-sm font-semibold text-slate-700 ml-1">Referral</label>
+                  <div className="relative group">
+                    <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                      <Search className="h-5 w-5 text-slate-400 group-focus-within:text-indigo-500 transition-colors" />
                     </div>
-                 </div>
+                    <select
+                      id="source"
+                      required
+                      value={formData.referralSource}
+                      onChange={(e) => setFormData(prev => ({ ...prev, referralSource: e.target.value }))}
+                      className="w-full bg-white text-slate-900 border border-slate-200 rounded-xl pl-11 pr-10 py-3 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all appearance-none hover:border-slate-300 shadow-sm text-sm"
+                    >
+                      <option value="">Select...</option>
+                      <option value="social">Social Media</option>
+                      <option value="search">Search Engine</option>
+                      <option value="friend">Friend</option>
+                      <option value="blog">Blog</option>
+                      <option value="other">Other</option>
+                    </select>
+                    <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                      <ChevronDown className="h-4 w-4 text-slate-400" />
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div className="pt-2">
-                <button 
-                    type="submit" 
-                    disabled={isSubmitting}
-                    className="w-full bg-indigo-600 text-white font-bold py-3.5 rounded-xl hover:bg-indigo-700 transition-all shadow-lg hover:shadow-indigo-500/25 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed active:scale-[0.98]"
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-indigo-600 text-white font-bold py-3.5 rounded-xl hover:bg-indigo-700 transition-all shadow-lg hover:shadow-indigo-500/25 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed active:scale-[0.98]"
                 >
-                    {isSubmitting ? (
+                  {isSubmitting ? (
                     <>
-                        <Loader2 className="w-5 h-5 animate-spin" /> Creating Account...
+                      <Loader2 className="w-5 h-5 animate-spin" /> Creating Account...
                     </>
-                    ) : (
+                  ) : (
                     "Complete Registration"
-                    )}
+                  )}
                 </button>
                 <p className="text-[11px] text-center text-slate-400 mt-4 leading-relaxed px-4">
-                    By registering, you agree to our <button type="button" className="text-indigo-600 hover:underline font-medium">Terms of Service</button> and <button type="button" className="text-indigo-600 hover:underline font-medium">Privacy Policy</button>.
+                  By registering, you agree to our <button type="button" className="text-indigo-600 hover:underline font-medium">Terms of Service</button> and <button type="button" className="text-indigo-600 hover:underline font-medium">Privacy Policy</button>.
                 </p>
               </div>
             </form>
