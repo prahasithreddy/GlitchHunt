@@ -368,7 +368,8 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
   // --- RENDERING LOGIC ---
   return (
     <>
-      <header className="max-w-6xl mx-auto px-6 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
+      <header className="bg-slate-50 py-16 md:py-24">
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
         <div>
           <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
             {headline}
@@ -435,7 +436,103 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
               <MockFeed />
           </div>
         </div>
+        </div>
       </header>
+
+      {/* Trusted Companies Scrolling Section */}
+      <section className="bg-white py-12 border-y border-slate-200 overflow-hidden">
+        <div className="max-w-6xl mx-auto px-6 mb-8">
+          <p className="text-center text-sm font-semibold text-slate-500 uppercase tracking-wider">Trusted by teams at</p>
+        </div>
+        <div className="relative">
+          {/* Gradient overlays for fade effect */}
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
+          
+          {/* Scrolling container */}
+          <div className="flex animate-scroll gap-16 items-center">
+            {/* First set of logos */}
+            <div className="flex gap-16 items-center shrink-0">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">S</span>
+                </div>
+                <span className="text-xl font-bold text-slate-700">Stripe</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">N</span>
+                </div>
+                <span className="text-xl font-bold text-slate-700">Notion</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">S</span>
+                </div>
+                <span className="text-xl font-bold text-slate-700">Spotify</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-slate-800 rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">F</span>
+                </div>
+                <span className="text-xl font-bold text-slate-700">Figma</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">D</span>
+                </div>
+                <span className="text-xl font-bold text-slate-700">Dropbox</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">A</span>
+                </div>
+                <span className="text-xl font-bold text-slate-700">Asana</span>
+              </div>
+            </div>
+            
+            {/* Duplicate set for seamless loop */}
+            <div className="flex gap-16 items-center shrink-0">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">S</span>
+                </div>
+                <span className="text-xl font-bold text-slate-700">Stripe</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">N</span>
+                </div>
+                <span className="text-xl font-bold text-slate-700">Notion</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">S</span>
+                </div>
+                <span className="text-xl font-bold text-slate-700">Spotify</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-slate-800 rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">F</span>
+                </div>
+                <span className="text-xl font-bold text-slate-700">Figma</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">D</span>
+                </div>
+                <span className="text-xl font-bold text-slate-700">Dropbox</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">A</span>
+                </div>
+                <span className="text-xl font-bold text-slate-700">Asana</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Features Section - Clean Style */}
       <section className="bg-slate-50 py-24 px-6 border-t border-slate-100">
