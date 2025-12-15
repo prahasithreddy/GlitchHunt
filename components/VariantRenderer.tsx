@@ -457,26 +457,74 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
           <div className="flex animate-scroll gap-16 items-center">
             {/* First set of logos */}
             <div className="flex gap-16 items-center shrink-0">
-              <SiStripe className="h-10 w-auto text-slate-700" />
-              <SiNotion className="h-10 w-auto text-slate-700" />
-              <SiSpotify className="h-10 w-auto text-slate-700" />
-              <SiFigma className="h-10 w-auto text-slate-700" />
-              <SiDropbox className="h-10 w-auto text-slate-700" />
-              <SiAsana className="h-10 w-auto text-slate-700" />
-              <SiSlack className="h-10 w-auto text-slate-700" />
-              <SiVercel className="h-10 w-auto text-slate-700" />
+              <div className="flex items-center gap-3">
+                <SiStripe size={32} color="#334155" />
+                <span className="text-xl font-bold text-slate-700">Stripe</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <SiNotion size={32} color="#334155" />
+                <span className="text-xl font-bold text-slate-700">Notion</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <SiSpotify size={32} color="#334155" />
+                <span className="text-xl font-bold text-slate-700">Spotify</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <SiFigma size={32} color="#334155" />
+                <span className="text-xl font-bold text-slate-700">Figma</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <SiDropbox size={32} color="#334155" />
+                <span className="text-xl font-bold text-slate-700">Dropbox</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <SiAsana size={32} color="#334155" />
+                <span className="text-xl font-bold text-slate-700">Asana</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <SiSlack size={32} color="#334155" />
+                <span className="text-xl font-bold text-slate-700">Slack</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <SiVercel size={32} color="#334155" />
+                <span className="text-xl font-bold text-slate-700">Vercel</span>
+              </div>
             </div>
             
             {/* Duplicate set for seamless loop */}
             <div className="flex gap-16 items-center shrink-0">
-              <SiStripe className="h-10 w-auto text-slate-700" />
-              <SiNotion className="h-10 w-auto text-slate-700" />
-              <SiSpotify className="h-10 w-auto text-slate-700" />
-              <SiFigma className="h-10 w-auto text-slate-700" />
-              <SiDropbox className="h-10 w-auto text-slate-700" />
-              <SiAsana className="h-10 w-auto text-slate-700" />
-              <SiSlack className="h-10 w-auto text-slate-700" />
-              <SiVercel className="h-10 w-auto text-slate-700" />
+              <div className="flex items-center gap-3">
+                <SiStripe size={32} color="#334155" />
+                <span className="text-xl font-bold text-slate-700">Stripe</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <SiNotion size={32} color="#334155" />
+                <span className="text-xl font-bold text-slate-700">Notion</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <SiSpotify size={32} color="#334155" />
+                <span className="text-xl font-bold text-slate-700">Spotify</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <SiFigma size={32} color="#334155" />
+                <span className="text-xl font-bold text-slate-700">Figma</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <SiDropbox size={32} color="#334155" />
+                <span className="text-xl font-bold text-slate-700">Dropbox</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <SiAsana size={32} color="#334155" />
+                <span className="text-xl font-bold text-slate-700">Asana</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <SiSlack size={32} color="#334155" />
+                <span className="text-xl font-bold text-slate-700">Slack</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <SiVercel size={32} color="#334155" />
+                <span className="text-xl font-bold text-slate-700">Vercel</span>
+              </div>
             </div>
           </div>
         </div>
