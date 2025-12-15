@@ -5,6 +5,10 @@ import {
   Home, ArrowUpRight, Globe, BarChart2, MessageCircle, Settings,
   Menu, Share2, Bookmark, X, Image as ImageIcon, Video, ShieldAlert
 } from 'lucide-react';
+import { 
+  SiStripe, SiNotion, SiSpotify, SiFigma, SiDropbox, 
+  SiAsana, SiSlack, SiVercel, SiNetlify 
+} from 'react-icons/si';
 
 interface VariantRendererProps {
   email: string;
@@ -453,82 +457,26 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
           <div className="flex animate-scroll gap-16 items-center">
             {/* First set of logos */}
             <div className="flex gap-16 items-center shrink-0">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">S</span>
-                </div>
-                <span className="text-xl font-bold text-slate-700">Stripe</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">N</span>
-                </div>
-                <span className="text-xl font-bold text-slate-700">Notion</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">S</span>
-                </div>
-                <span className="text-xl font-bold text-slate-700">Spotify</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-slate-800 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">F</span>
-                </div>
-                <span className="text-xl font-bold text-slate-700">Figma</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">D</span>
-                </div>
-                <span className="text-xl font-bold text-slate-700">Dropbox</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">A</span>
-                </div>
-                <span className="text-xl font-bold text-slate-700">Asana</span>
-              </div>
+              <SiStripe className="h-10 w-auto text-slate-700" />
+              <SiNotion className="h-10 w-auto text-slate-700" />
+              <SiSpotify className="h-10 w-auto text-slate-700" />
+              <SiFigma className="h-10 w-auto text-slate-700" />
+              <SiDropbox className="h-10 w-auto text-slate-700" />
+              <SiAsana className="h-10 w-auto text-slate-700" />
+              <SiSlack className="h-10 w-auto text-slate-700" />
+              <SiVercel className="h-10 w-auto text-slate-700" />
             </div>
             
             {/* Duplicate set for seamless loop */}
             <div className="flex gap-16 items-center shrink-0">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">S</span>
-                </div>
-                <span className="text-xl font-bold text-slate-700">Stripe</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">N</span>
-                </div>
-                <span className="text-xl font-bold text-slate-700">Notion</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">S</span>
-                </div>
-                <span className="text-xl font-bold text-slate-700">Spotify</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-slate-800 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">F</span>
-                </div>
-                <span className="text-xl font-bold text-slate-700">Figma</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">D</span>
-                </div>
-                <span className="text-xl font-bold text-slate-700">Dropbox</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">A</span>
-                </div>
-                <span className="text-xl font-bold text-slate-700">Asana</span>
-              </div>
+              <SiStripe className="h-10 w-auto text-slate-700" />
+              <SiNotion className="h-10 w-auto text-slate-700" />
+              <SiSpotify className="h-10 w-auto text-slate-700" />
+              <SiFigma className="h-10 w-auto text-slate-700" />
+              <SiDropbox className="h-10 w-auto text-slate-700" />
+              <SiAsana className="h-10 w-auto text-slate-700" />
+              <SiSlack className="h-10 w-auto text-slate-700" />
+              <SiVercel className="h-10 w-auto text-slate-700" />
             </div>
           </div>
         </div>
