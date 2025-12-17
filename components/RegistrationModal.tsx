@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, CheckCircle, Loader2, User, Mail, Calendar, Search, ChevronDown, AlertCircle } from 'lucide-react';
 import { saveRegistration, RegistrationData } from '../services/supabaseService';
+import { trackRegistration, trackFormSubmission } from '../services/analyticsService';
 
 interface RegistrationModalProps {
   isOpen: boolean;
@@ -47,6 +48,10 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
 
     if (result.success) {
       setIsSuccess(true);
+      // Track successful registration
+      trackRegistration(true, formData.referralSource);
+      trackFormSubmission('Registration', true);
+      
       // Reset form
       setFormData({
         name: '',
@@ -56,6 +61,9 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
       });
     } else {
       setError(result.error || 'Registration failed. Please try again.');
+      // Track failed registration
+      trackRegistration(false, formData.referralSource);
+      trackFormSubmission('Registration', false);
     }
   };
 
