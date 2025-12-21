@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { 
-  Bug, Zap, MessageSquare, TrendingUp, Star, Mail, ArrowRight, 
+import {
+  Bug, Zap, MessageSquare, TrendingUp, Star, Mail, ArrowRight,
   Search, Bell, Plus, Filter, ChevronUp, ChevronDown, MoreHorizontal,
   Home, ArrowUpRight, Globe, BarChart2, MessageCircle, Settings,
   Menu, Share2, Bookmark, X, Image as ImageIcon, Video, ShieldAlert,
   FileText, Users, Tag, ThumbsUp, Eye, Clock, Pin, Check
 } from 'lucide-react';
-import { 
-  SiStripe, SiNotion, SiSpotify, SiFigma, SiDropbox, 
-  SiAsana, SiSlack, SiVercel, SiNetlify 
+import {
+  SiStripe, SiNotion, SiSpotify, SiFigma, SiDropbox,
+  SiAsana, SiSlack, SiVercel, SiNetlify
 } from 'react-icons/si';
 
 interface VariantRendererProps {
@@ -21,49 +21,49 @@ type ViewType = 'confluence' | 'reddit' | 'discourse';
 
 // --- Mock Data for UI ---
 const mockRedditIssues = [
-  { 
-    id: 1, 
-    subreddit: "g/stripe", 
-    user: "u/payment_dev", 
-    time: "4h ago", 
-    title: "Stripe payment modal freezes on iOS Safari 17 when dark mode is toggled", 
-    votes: "1.2k", 
+  {
+    id: 1,
+    subreddit: "g/stripe",
+    user: "u/payment_dev",
+    time: "4h ago",
+    title: "Stripe payment modal freezes on iOS Safari 17 when dark mode is toggled",
+    votes: "1.2k",
     comments: 89,
     tag: "Critical",
     color: "red",
     hasImage: true
   },
-  { 
-    id: 2, 
-    subreddit: "g/notion", 
-    user: "u/productivity_guru", 
-    time: "6h ago", 
-    title: "PDF export cuts off wide tables and images in landscape mode", 
-    votes: "856", 
+  {
+    id: 2,
+    subreddit: "g/notion",
+    user: "u/productivity_guru",
+    time: "6h ago",
+    title: "PDF export cuts off wide tables and images in landscape mode",
+    votes: "856",
     comments: 42,
     tag: "Bug",
     color: "orange",
     hasImage: false
   },
-  { 
-    id: 3, 
-    subreddit: "g/spotify", 
-    user: "u/music_lover", 
-    time: "12h ago", 
-    title: "Web player audio stutter on high latency connections (reproducible)", 
-    votes: "543", 
+  {
+    id: 3,
+    subreddit: "g/spotify",
+    user: "u/music_lover",
+    time: "12h ago",
+    title: "Web player audio stutter on high latency connections (reproducible)",
+    votes: "543",
     comments: 21,
     tag: "Performance",
     color: "blue",
     hasImage: false
   },
-   { 
-    id: 4, 
-    subreddit: "g/figma", 
-    user: "u/designer_steve", 
-    time: "1d ago", 
-    title: "Auto-layout constraints break when nesting 4+ levels deep", 
-    votes: "2.1k", 
+  {
+    id: 4,
+    subreddit: "g/figma",
+    user: "u/designer_steve",
+    time: "1d ago",
+    title: "Auto-layout constraints break when nesting 4+ levels deep",
+    votes: "2.1k",
     comments: 156,
     tag: "UI/UX",
     color: "purple",
@@ -164,11 +164,11 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
   const [isViewDropdownOpen, setIsViewDropdownOpen] = useState(false);
   const [leftSearchQuery, setLeftSearchQuery] = useState('');
   const [topSearchQuery, setTopSearchQuery] = useState('');
-  
+
   // Default copy text
   const headline = "Where Bugs Go To Die.";
   const subheadline = "The front page of the broken internet. Join thousands of users reporting and fixing glitches in your favorite apps.";
-  
+
   const handleStartHuntingClick = () => {
     if (email) {
       onStartHunting();
@@ -186,7 +186,7 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
   ];
 
   const getSearchPlaceholder = () => {
-    switch(currentView) {
+    switch (currentView) {
       case 'confluence': return 'Search in documentation...';
       case 'reddit': return 'Search in posts...';
       case 'discourse': return 'Search in forums...';
@@ -218,7 +218,7 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
               </div>
               <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform hidden md:block ${isViewDropdownOpen ? 'rotate-180' : ''}`} />
             </button>
-            
+
             {isViewDropdownOpen && (
               <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-slate-200 rounded-lg shadow-xl z-50 overflow-hidden">
                 {viewOptions.map((option) => {
@@ -231,9 +231,8 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
                         setIsViewDropdownOpen(false);
                         setLeftSearchQuery('');
                       }}
-                      className={`w-full flex items-center gap-3 px-4 py-3 hover:bg-slate-50 transition-colors ${
-                        currentView === option.value ? 'bg-indigo-50 text-indigo-600' : 'text-slate-700'
-                      }`}
+                      className={`w-full flex items-center gap-3 px-4 py-3 hover:bg-slate-50 transition-colors ${currentView === option.value ? 'bg-indigo-50 text-indigo-600' : 'text-slate-700'
+                        }`}
                     >
                       <OptionIcon className="w-5 h-5" />
                       <span className="font-medium text-sm hidden md:inline">{option.label}</span>
@@ -303,7 +302,7 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
           <span className="text-[10px] font-bold text-slate-400 tracking-wider uppercase">Your Communities</span>
           <ChevronDown className="w-4 h-4 text-slate-400" />
         </div>
-        
+
         <div className="px-2 space-y-1 hidden md:block">
           {['g/startups', 'g/webdev', 'g/reactjs', 'g/saas'].map(sub => (
             <div key={sub} className="px-4 py-1.5 hover:bg-slate-50 rounded-md cursor-pointer flex items-center gap-2 text-slate-600">
@@ -312,7 +311,7 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
             </div>
           ))}
         </div>
-        
+
         <div className="px-6 mb-2 mt-4 hidden md:flex justify-between items-center group cursor-pointer hover:bg-slate-50 py-1">
           <span className="text-[10px] font-bold text-slate-400 tracking-wider uppercase">Custom Feeds</span>
           <ChevronDown className="w-4 h-4 text-slate-400" />
@@ -334,9 +333,8 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
         {mockConfluencePages.map((page) => (
           <div
             key={page.id}
-            className={`flex items-center gap-2 px-3 py-2 rounded hover:bg-slate-100 cursor-pointer transition-colors ${
-              page.id === 2 ? 'bg-slate-100 font-semibold' : ''
-            }`}
+            className={`flex items-center gap-2 px-3 py-2 rounded hover:bg-slate-100 cursor-pointer transition-colors ${page.id === 2 ? 'bg-slate-100 font-semibold' : ''
+              }`}
             style={{ paddingLeft: `${12 + page.level * 20}px` }}
           >
             <ChevronDown className="w-3 h-3 text-slate-400 shrink-0 hidden md:block" />
@@ -361,7 +359,7 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
         <Home className="w-5 h-5" />
         <span className="hidden md:inline font-bold">All Topics</span>
       </div>
-      
+
       <div className="mt-4 hidden md:block">
         <div className="px-3 mb-2 text-[10px] font-bold text-slate-400 tracking-wider uppercase">Categories</div>
         <div className="space-y-1">
@@ -409,17 +407,17 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
           <Bug className="w-5 h-5 text-white" />
         </div>
         <span className="font-bold text-lg hidden sm:block tracking-tight text-slate-900">glitchhunt</span>
-        
+
         {/* Global Search Bar */}
         <div className="hidden sm:flex flex-1 max-w-xl mx-4 relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <Search className="h-4 w-4 text-slate-400" />
           </div>
-          <input 
+          <input
             type="text"
             value={topSearchQuery}
             onChange={(e) => setTopSearchQuery(e.target.value)}
-            placeholder="Search across all (posts, docs, forums)..." 
+            placeholder="Search across all (posts, docs, forums)..."
             className="block w-full rounded-full bg-slate-100 border border-transparent hover:bg-white hover:border-slate-300 py-1.5 pl-10 pr-3 text-slate-900 placeholder-slate-500 focus:ring-2 focus:ring-indigo-500 focus:bg-white text-sm transition-all"
           />
           {topSearchQuery && (
@@ -487,7 +485,7 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
               </div>
 
               <h3 className="text-lg font-medium text-slate-900 mb-2 leading-snug pr-4">{issue.title}</h3>
-              
+
               <div className="flex items-center gap-2 mb-3">
                 <span className={`px-2 py-0.5 rounded-full bg-${issue.color}-100 text-${issue.color}-700 text-[10px] font-bold uppercase border border-${issue.color}-200`}>
                   {issue.tag}
@@ -532,7 +530,7 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
         <div className="px-3 pb-3">
           <div className="flex items-center gap-2 -mt-4 mb-2">
             <div className="w-10 h-10 bg-white p-1 rounded-full">
-              <div className="w-full h-full bg-indigo-600 rounded-full flex items-center justify-center text-white"><Bug className="w-5 h-5"/></div>
+              <div className="w-full h-full bg-indigo-600 rounded-full flex items-center justify-center text-white"><Bug className="w-5 h-5" /></div>
             </div>
             <span className="font-bold text-slate-800 text-sm mt-3">g/GlitchHunt</span>
           </div>
@@ -710,7 +708,7 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
         <p className="text-slate-600 leading-relaxed mb-4">
           Follow these steps to create a comprehensive bug report:
         </p>
-        
+
         <div className="bg-slate-50 rounded-lg p-4 mb-6 font-mono text-sm">
           <div className="text-slate-500 mb-2">// Example bug report structure</div>
           <div className="text-slate-800">
@@ -771,7 +769,7 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
             </div>
           </div>
         </div>
-        
+
         <div className="border-t border-slate-200 pt-4">
           <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Related Pages</div>
           <div className="space-y-2">
@@ -855,7 +853,7 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
                         </div>
                       )}
                     </div>
-                    
+
                     <div className="flex items-center gap-3 text-sm text-slate-500 mb-3">
                       <span className="font-medium text-slate-700">{thread.author}</span>
                       <span>posted in</span>
@@ -986,12 +984,12 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
       <div className="w-full h-full bg-[#DAE0E6] flex text-xs select-none cursor-default font-sans text-slate-600 overflow-hidden">
         {/* Unified Left Nav */}
         <UnifiedLeftNav />
-        
+
         {/* Main Content Area */}
         <div className="flex-1 flex flex-col min-w-0 bg-[#DAE0E6]">
           {/* Unified Top Nav */}
           <UnifiedTopNav />
-          
+
           {/* Content Area - Changes based on view */}
           <div className="flex-1 overflow-y-auto custom-scrollbar flex justify-center">
             {currentView === 'reddit' && (
@@ -1019,7 +1017,7 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
   };
 
   const MockFeed = () => (
-    <div className="w-full max-w-md bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+    <div className="w-full bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
       {mockRedditIssues.slice(0, 3).map((issue) => (
         <div key={issue.id} className="p-4 border-b border-gray-100 hover:bg-gray-50 flex gap-4">
           <div className="flex flex-col items-center gap-1">
@@ -1043,72 +1041,72 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
     <>
       <header className="bg-slate-50 py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
-            {headline}
-          </h1>
-          <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-            {subheadline}
-          </p>
-          
-          <div className="flex flex-col gap-4 mb-8">
-            <div className="relative group w-full max-w-lg">
+          <div>
+            <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
+              {headline}
+            </h1>
+            <p className="text-lg text-slate-600 mb-8 leading-relaxed">
+              {subheadline}
+            </p>
+
+            <div className="flex flex-col gap-4 mb-8">
+              <div className="relative group w-full max-w-lg">
                 {/* Glow effect */}
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl opacity-20 group-hover:opacity-40 blur transition duration-500"></div>
-                
-                <div className="relative flex flex-col sm:flex-row p-1.5 bg-white rounded-2xl shadow-xl ring-1 ring-gray-900/5 items-center gap-2">
-                    <div className="flex-1 flex items-center px-3 h-14 w-full">
-                        <Mail className="w-5 h-5 text-slate-400 shrink-0 ml-1" />
-                        <input 
-                          id="email-input"
-                          type="email" 
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          placeholder="name@work-email.com" 
-                          className="w-full bg-transparent border-none px-3 py-2 text-slate-900 placeholder-slate-400 outline-none focus:ring-0 text-base"
-                        />
-                    </div>
-                    <button 
-                      onClick={handleStartHuntingClick}
-                      className="w-full sm:w-auto bg-slate-900 text-white px-8 py-3.5 rounded-xl font-bold hover:bg-indigo-600 transition-all shadow-lg hover:shadow-indigo-500/30 flex items-center justify-center gap-2 whitespace-nowrap group"
-                    >
-                      Start Hunting
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </button>
-                </div>
-            </div>
-            
-            <p className="text-sm font-semibold text-indigo-600 flex items-center gap-1.5 pl-2 mt-2">
-              <Zap className="w-4 h-4 fill-indigo-100" /> 
-              <span>Early hunters get lifetime free access <span className="text-indigo-400 font-medium opacity-80">(LIMITED SEATS)</span></span>
-            </p>
-          </div>
 
-          <div className="flex items-center gap-4">
-            <div className="flex -space-x-3">
-               {[11, 29, 33, 45].map((i) => (
-                 <img 
-                   key={i} 
-                   src={`https://i.pravatar.cc/150?img=${i}`} 
-                   alt="Hunter" 
-                   className="w-10 h-10 rounded-full border-2 border-white shadow-sm" 
-                 />
-               ))}
+                <div className="relative flex flex-col sm:flex-row p-1.5 bg-white rounded-2xl shadow-xl ring-1 ring-gray-900/5 items-center gap-2">
+                  <div className="flex-1 flex items-center px-3 h-14 w-full">
+                    <Mail className="w-5 h-5 text-slate-400 shrink-0 ml-1" />
+                    <input
+                      id="email-input"
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="name@work-email.com"
+                      className="w-full bg-transparent border-none px-3 py-2 text-slate-900 placeholder-slate-400 outline-none focus:ring-0 text-base"
+                    />
+                  </div>
+                  <button
+                    onClick={handleStartHuntingClick}
+                    className="w-full sm:w-auto bg-slate-900 text-white px-8 py-3.5 rounded-xl font-bold hover:bg-indigo-600 transition-all shadow-lg hover:shadow-indigo-500/30 flex items-center justify-center gap-2 whitespace-nowrap group"
+                  >
+                    Start Hunting
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </div>
+              </div>
+
+              <p className="text-sm font-semibold text-indigo-600 flex items-center gap-1.5 pl-2 mt-2">
+                <Zap className="w-4 h-4 fill-indigo-100" />
+                <span>Early hunters get lifetime free access <span className="text-indigo-400 font-medium opacity-80">(LIMITED SEATS)</span></span>
+              </p>
             </div>
-            <div>
-               <div className="flex items-center gap-0.5 mb-1">
-                 {[1,2,3,4,5].map(i => <Star key={i} className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />)}
-               </div>
-               <p className="text-sm font-semibold text-slate-700">Trusted by 734+ testers</p>
+
+            <div className="flex items-center gap-4">
+              <div className="flex -space-x-3">
+                {[11, 29, 33, 45].map((i) => (
+                  <img
+                    key={i}
+                    src={`https://i.pravatar.cc/150?img=${i}`}
+                    alt="Hunter"
+                    className="w-10 h-10 rounded-full border-2 border-white shadow-sm"
+                  />
+                ))}
+              </div>
+              <div>
+                <div className="flex items-center gap-0.5 mb-1">
+                  {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />)}
+                </div>
+                <p className="text-sm font-semibold text-slate-700">Trusted by 734+ testers</p>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="relative">
-          <div className="absolute -inset-4 bg-indigo-100 rounded-full blur-3xl opacity-50" />
-          <div className="relative bg-white border border-gray-200 rounded-2xl shadow-2xl overflow-hidden p-2 transform rotate-2 hover:rotate-0 transition-transform duration-500">
+          <div className="relative">
+            <div className="absolute -inset-4 bg-indigo-100 rounded-full blur-3xl opacity-50" />
+            <div className="relative bg-white border border-gray-200 rounded-2xl shadow-2xl overflow-hidden p-2 transform rotate-2 hover:rotate-0 transition-transform duration-500">
               <MockFeed />
+            </div>
           </div>
-        </div>
         </div>
       </header>
 
@@ -1121,7 +1119,7 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
           {/* Gradient overlays for fade effect */}
           <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
           <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
-          
+
           {/* Scrolling container */}
           <div className="flex animate-scroll gap-16 items-center">
             {/* First set of logos */}
@@ -1159,7 +1157,7 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
                 <span className="text-xl font-bold text-slate-700">Vercel</span>
               </div>
             </div>
-            
+
             {/* Duplicate set for seamless loop */}
             <div className="flex gap-16 items-center shrink-0">
               <div className="flex items-center gap-3">
@@ -1201,55 +1199,55 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
 
       {/* Features Section - Clean Style */}
       <section className="bg-slate-50 py-24 px-6 border-t border-slate-100">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-slate-900 mb-4">Everything you need to squash bugs</h2>
-              <p className="text-slate-600 max-w-2xl mx-auto">Powerful tools designed for the modern developer community.</p>
-            </div>
-            <div className="grid md:grid-cols-3 gap-8">
-              {features.map((feature, i) => (
-                <div key={i} className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 group">
-                  <div className="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-indigo-600 transition-colors">
-                    <feature.icon className="w-6 h-6 text-indigo-600 group-hover:text-white transition-colors" />
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">{feature.title}</h3>
-                  <p className="text-slate-600 leading-relaxed text-sm">
-                    {feature.description}
-                  </p>
-                </div>
-              ))}
-            </div>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">Everything you need to squash bugs</h2>
+            <p className="text-slate-600 max-w-2xl mx-auto">Powerful tools designed for the modern developer community.</p>
           </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {features.map((feature, i) => (
+              <div key={i} className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 group">
+                <div className="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-indigo-600 transition-colors">
+                  <feature.icon className="w-6 h-6 text-indigo-600 group-hover:text-white transition-colors" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">{feature.title}</h3>
+                <p className="text-slate-600 leading-relaxed text-sm">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Product Screenshot Section */}
       <section className="py-24 px-6 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto text-center">
-           <div className="mb-12">
-             <span className="text-indigo-600 font-bold tracking-wider uppercase text-sm">Product Preview</span>
-             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2 mb-4">See how it works</h2>
-             <p className="text-slate-600 max-w-2xl mx-auto">A clean, intuitive interface built for rapid bug reporting and community triage.</p>
-           </div>
-           
-           <div className="relative rounded-xl border border-slate-200 bg-slate-50 shadow-2xl overflow-hidden group max-w-7xl mx-auto h-[800px]">
-             {/* Browser Chrome Placeholder */}
-             <div className="bg-white border-b border-slate-200 px-4 py-3 flex gap-4 items-center">
-               <div className="flex gap-1.5">
-                 <div className="w-3 h-3 rounded-full bg-slate-200 group-hover:bg-red-400 transition-colors"></div>
-                 <div className="w-3 h-3 rounded-full bg-slate-200 group-hover:bg-yellow-400 transition-colors"></div>
-                 <div className="w-3 h-3 rounded-full bg-slate-200 group-hover:bg-green-400 transition-colors"></div>
-               </div>
-               <div className="flex-1 bg-slate-50 px-3 py-1.5 rounded-lg text-xs text-slate-500 flex items-center justify-center border border-slate-200 font-mono">
-                  glitchhunt.com/g/all
-               </div>
-               <div className="w-16"></div>
-             </div>
-             
-             {/* Actual Dashboard UI Implementation */}
-             <div className="relative w-full h-full bg-[#DAE0E6] text-left">
-                <DashboardMockUI />
-             </div>
-           </div>
+          <div className="mb-12">
+            <span className="text-indigo-600 font-bold tracking-wider uppercase text-sm">Product Preview</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2 mb-4">See how it works</h2>
+            <p className="text-slate-600 max-w-2xl mx-auto">A clean, intuitive interface built for rapid bug reporting and community triage.</p>
+          </div>
+
+          <div className="relative rounded-xl border border-slate-200 bg-slate-50 shadow-2xl overflow-hidden group max-w-7xl mx-auto h-[800px]">
+            {/* Browser Chrome Placeholder */}
+            <div className="bg-white border-b border-slate-200 px-4 py-3 flex gap-4 items-center">
+              <div className="flex gap-1.5">
+                <div className="w-3 h-3 rounded-full bg-slate-200 group-hover:bg-red-400 transition-colors"></div>
+                <div className="w-3 h-3 rounded-full bg-slate-200 group-hover:bg-yellow-400 transition-colors"></div>
+                <div className="w-3 h-3 rounded-full bg-slate-200 group-hover:bg-green-400 transition-colors"></div>
+              </div>
+              <div className="flex-1 bg-slate-50 px-3 py-1.5 rounded-lg text-xs text-slate-500 flex items-center justify-center border border-slate-200 font-mono">
+                glitchhunt.com/g/all
+              </div>
+              <div className="w-16"></div>
+            </div>
+
+            {/* Actual Dashboard UI Implementation */}
+            <div className="relative w-full h-full bg-[#DAE0E6] text-left">
+              <DashboardMockUI />
+            </div>
+          </div>
         </div>
       </section>
     </>
