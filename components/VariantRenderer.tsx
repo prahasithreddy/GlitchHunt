@@ -143,18 +143,18 @@ const mockDiscourseThreads = [
 
 const features = [
   {
-    title: "Bug Posting",
-    description: "Submit detailed bug reports with screenshots, logs, and reproduction steps in seconds to get them fixed faster.",
-    icon: Bug
+    title: "Documentation",
+    description: "Create and maintain living docs with version history, rich formatting, and easy collaboration. Knowledge that stays organized.",
+    icon: FileText
   },
   {
-    title: "Issue Tracking",
-    description: "Follow the lifecycle of a bug from discovery to resolution with real-time status updates and notifications.",
+    title: "Updates Feed",
+    description: "Share quick updates, announcements, and wins. Like an internal Twitter that keeps everyone in the loop without the noise.",
     icon: TrendingUp
   },
   {
-    title: "User Conversation",
-    description: "Connect with other hunters, share workarounds, and collaborate on fixes in thread-based discussions.",
+    title: "Threaded Discussions",
+    description: "Deep-dive conversations organized by topic. Forums that make complex discussions easy to follow and reference later.",
     icon: MessageSquare
   }
 ];
@@ -166,8 +166,8 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
   const [topSearchQuery, setTopSearchQuery] = useState('');
 
   // Default copy text
-  const headline = "Where Bugs Go To Die.";
-  const subheadline = "The front page of the broken internet. Join thousands of users reporting and fixing glitches in your favorite apps.";
+  const headline = "One place for your team's context.";
+  const subheadline = "Stop losing information across Slack threads, Google Docs, and email. GlitchHunt unifies documentation, updates, and discussions in one intelligent workspace.";
 
   const handleStartHuntingClick = () => {
     if (email) {
@@ -1039,179 +1039,226 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
   // --- RENDERING LOGIC ---
   return (
     <>
-      <header className="bg-slate-50 py-16 md:py-24">
-        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
-              {headline}
-            </h1>
-            <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-              {subheadline}
-            </p>
-
-            <div className="flex flex-col gap-4 mb-8">
-              <div className="relative group w-full max-w-lg">
-                {/* Glow effect */}
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl opacity-20 group-hover:opacity-40 blur transition duration-500"></div>
-
-                <div className="relative flex flex-col sm:flex-row p-1.5 bg-white rounded-2xl shadow-xl ring-1 ring-gray-900/5 items-center gap-2">
-                  <div className="flex-1 flex items-center px-3 h-14 w-full">
-                    <Mail className="w-5 h-5 text-slate-400 shrink-0 ml-1" />
-                    <input
-                      id="email-input"
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="name@work-email.com"
-                      className="w-full bg-transparent border-none px-3 py-2 text-slate-900 placeholder-slate-400 outline-none focus:ring-0 text-base"
-                    />
-                  </div>
-                  <button
-                    onClick={handleStartHuntingClick}
-                    className="w-full sm:w-auto bg-slate-900 text-white px-8 py-3.5 rounded-xl font-bold hover:bg-indigo-600 transition-all shadow-lg hover:shadow-indigo-500/30 flex items-center justify-center gap-2 whitespace-nowrap group"
-                  >
-                    Start Hunting
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </div>
+      {/* Hero Section with Animated Demo */}
+      <header className="relative bg-black py-12 sm:py-16 lg:py-24 overflow-hidden">
+        {/* Gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-purple-900/20 via-black to-black"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/30 via-black to-black"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            {/* Left: Content */}
+            <div className="text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-indigo-500/20 mb-6">
+                <Zap className="w-3 h-3 text-indigo-400" />
+                <span className="text-xs sm:text-sm font-semibold text-indigo-300">Now in Private Beta</span>
               </div>
-
-              <p className="text-sm font-semibold text-indigo-600 flex items-center gap-1.5 pl-2 mt-2">
-                <Zap className="w-4 h-4 fill-indigo-100" />
-                <span>Early hunters get lifetime free access <span className="text-indigo-400 font-medium opacity-80">(LIMITED SEATS)</span></span>
+              
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-4 sm:mb-6">
+                {headline}
+              </h1>
+              <p className="text-base sm:text-lg text-gray-400 mb-6 sm:mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                {subheadline}
               </p>
+
+              {/* CTA Section */}
+              <div className="flex flex-col gap-4 mb-8">
+                <div className="relative group w-full max-w-xl mx-auto lg:mx-0">
+                  {/* Glow effect */}
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl opacity-30 group-hover:opacity-60 blur transition duration-500"></div>
+
+                  <div className="relative flex flex-col sm:flex-row p-1.5 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 items-center gap-2">
+                    <div className="flex-1 flex items-center px-3 h-12 sm:h-14 w-full">
+                      <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 shrink-0 ml-1" />
+                      <input
+                        id="email-input"
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="name@company.com"
+                        className="w-full bg-transparent border-none px-3 py-2 text-white placeholder-gray-500 outline-none focus:ring-0 text-sm sm:text-base"
+                      />
+                    </div>
+                    <button
+                      onClick={handleStartHuntingClick}
+                      className="w-full sm:w-auto bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl font-semibold hover:from-indigo-500 hover:to-purple-500 transition-all shadow-lg shadow-indigo-500/30 flex items-center justify-center gap-2 whitespace-nowrap group"
+                    >
+                      Request Access
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </button>
+                  </div>
+                </div>
+
+                <p className="text-xs sm:text-sm font-medium text-gray-400 flex items-center justify-center lg:justify-start gap-2 px-2">
+                  <Check className="w-4 h-4 text-green-400" />
+                  <span>Free for teams under 10 · No credit card required</span>
+                </p>
+              </div>
+
+              {/* Social Proof */}
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-6">
+                <div className="flex -space-x-3">
+                  {[11, 29, 33, 45].map((i) => (
+                    <img
+                      key={i}
+                      src={`https://i.pravatar.cc/150?img=${i}`}
+                      alt="Team member"
+                      className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-black shadow-lg"
+                    />
+                  ))}
+                </div>
+                <div className="text-center sm:text-left">
+                  <div className="flex items-center gap-1 mb-1 justify-center sm:justify-start">
+                    {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-yellow-400 text-yellow-400" />)}
+                  </div>
+                  <p className="text-xs sm:text-sm font-medium text-gray-400">Trusted by 800+ teams</p>
+                </div>
+              </div>
             </div>
 
-            <div className="flex items-center gap-4">
-              <div className="flex -space-x-3">
-                {[11, 29, 33, 45].map((i) => (
-                  <img
-                    key={i}
-                    src={`https://i.pravatar.cc/150?img=${i}`}
-                    alt="Hunter"
-                    className="w-10 h-10 rounded-full border-2 border-white shadow-sm"
-                  />
-                ))}
+            {/* Right: Animated Platform Demo */}
+            <div className="relative lg:ml-8">
+              <div className="absolute -inset-8 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-full blur-3xl opacity-50"></div>
+              <div className="relative">
+                <AnimatedPlatformDemo currentView={currentView} setCurrentView={setCurrentView} />
               </div>
-              <div>
-                <div className="flex items-center gap-0.5 mb-1">
-                  {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />)}
-                </div>
-                <p className="text-sm font-semibold text-slate-700">Trusted by 734+ testers</p>
-              </div>
-            </div>
-          </div>
-          <div className="relative">
-            <div className="absolute -inset-4 bg-indigo-100 rounded-full blur-3xl opacity-50" />
-            <div className="relative bg-white border border-gray-200 rounded-2xl shadow-2xl overflow-hidden p-2 transform rotate-2 hover:rotate-0 transition-transform duration-500">
-              <MockFeed />
             </div>
           </div>
         </div>
       </header>
 
+      {/* Problem Section */}
+      <section className="bg-black py-12 sm:py-16 lg:py-20 px-4 sm:px-6 border-t border-white/10">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6">
+            Stop context switching. Start shipping.
+          </h2>
+          <p className="text-base sm:text-lg text-gray-400 leading-relaxed mb-8 sm:mb-12 max-w-3xl mx-auto">
+            Your team's knowledge is scattered across Slack threads, buried in Google Docs, and lost in email chains. 
+            Every context switch costs 23 minutes of productivity. <span className="text-white font-semibold">We fix that.</span>
+          </p>
+          
+          <div className="grid sm:grid-cols-3 gap-4 sm:gap-8 text-center">
+            {[
+              { value: "23 min", label: "Lost per context switch" },
+              { value: "47%", label: "Time spent searching" },
+              { value: "6+", label: "Tools just to communicate" }
+            ].map((stat, i) => (
+              <div key={i} className="p-4 sm:p-6 rounded-xl bg-white/5 border border-white/10">
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400 mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-xs sm:text-sm text-gray-400">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Trusted Companies Scrolling Section */}
-      <section className="bg-white py-12 border-y border-slate-200 overflow-hidden">
-        <div className="max-w-6xl mx-auto px-6 mb-8">
-          <p className="text-center text-sm font-semibold text-slate-500 uppercase tracking-wider">Trusted by teams at</p>
+      <section className="bg-black py-12 sm:py-16 border-y border-white/10 overflow-hidden">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-6 sm:mb-8">
+          <p className="text-center text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wider">Trusted by teams at</p>
         </div>
         <div className="relative">
           {/* Gradient overlays for fade effect */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
+          <div className="absolute left-0 top-0 bottom-0 w-20 sm:w-32 bg-gradient-to-r from-black to-transparent z-10"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-20 sm:w-32 bg-gradient-to-l from-black to-transparent z-10"></div>
 
           {/* Scrolling container */}
-          <div className="flex animate-scroll gap-16 items-center">
+          <div className="flex animate-scroll gap-8 sm:gap-12 lg:gap-16 items-center">
             {/* First set of logos */}
-            <div className="flex gap-16 items-center shrink-0">
-              <div className="flex items-center gap-3">
-                <SiStripe size={32} color="#334155" />
-                <span className="text-xl font-bold text-slate-700">Stripe</span>
+            <div className="flex gap-8 sm:gap-12 lg:gap-16 items-center shrink-0">
+              <div className="flex items-center gap-2 sm:gap-3 opacity-60 hover:opacity-100 transition-opacity">
+                <SiStripe size={28} color="#8B5CF6" />
+                <span className="text-base sm:text-lg lg:text-xl font-bold text-gray-400 hidden sm:inline">Stripe</span>
               </div>
-              <div className="flex items-center gap-3">
-                <SiNotion size={32} color="#334155" />
-                <span className="text-xl font-bold text-slate-700">Notion</span>
+              <div className="flex items-center gap-2 sm:gap-3 opacity-60 hover:opacity-100 transition-opacity">
+                <SiNotion size={28} color="#8B5CF6" />
+                <span className="text-base sm:text-lg lg:text-xl font-bold text-gray-400 hidden sm:inline">Notion</span>
               </div>
-              <div className="flex items-center gap-3">
-                <SiSpotify size={32} color="#334155" />
-                <span className="text-xl font-bold text-slate-700">Spotify</span>
+              <div className="flex items-center gap-2 sm:gap-3 opacity-60 hover:opacity-100 transition-opacity">
+                <SiSpotify size={28} color="#8B5CF6" />
+                <span className="text-base sm:text-lg lg:text-xl font-bold text-gray-400 hidden sm:inline">Spotify</span>
               </div>
-              <div className="flex items-center gap-3">
-                <SiFigma size={32} color="#334155" />
-                <span className="text-xl font-bold text-slate-700">Figma</span>
+              <div className="flex items-center gap-2 sm:gap-3 opacity-60 hover:opacity-100 transition-opacity">
+                <SiFigma size={28} color="#8B5CF6" />
+                <span className="text-base sm:text-lg lg:text-xl font-bold text-gray-400 hidden sm:inline">Figma</span>
               </div>
-              <div className="flex items-center gap-3">
-                <SiDropbox size={32} color="#334155" />
-                <span className="text-xl font-bold text-slate-700">Dropbox</span>
+              <div className="flex items-center gap-2 sm:gap-3 opacity-60 hover:opacity-100 transition-opacity">
+                <SiDropbox size={28} color="#8B5CF6" />
+                <span className="text-base sm:text-lg lg:text-xl font-bold text-gray-400 hidden sm:inline">Dropbox</span>
               </div>
-              <div className="flex items-center gap-3">
-                <SiAsana size={32} color="#334155" />
-                <span className="text-xl font-bold text-slate-700">Asana</span>
+              <div className="flex items-center gap-2 sm:gap-3 opacity-60 hover:opacity-100 transition-opacity">
+                <SiAsana size={28} color="#8B5CF6" />
+                <span className="text-base sm:text-lg lg:text-xl font-bold text-gray-400 hidden sm:inline">Asana</span>
               </div>
-              <div className="flex items-center gap-3">
-                <SiSlack size={32} color="#334155" />
-                <span className="text-xl font-bold text-slate-700">Slack</span>
+              <div className="flex items-center gap-2 sm:gap-3 opacity-60 hover:opacity-100 transition-opacity">
+                <SiSlack size={28} color="#8B5CF6" />
+                <span className="text-base sm:text-lg lg:text-xl font-bold text-gray-400 hidden sm:inline">Slack</span>
               </div>
-              <div className="flex items-center gap-3">
-                <SiVercel size={32} color="#334155" />
-                <span className="text-xl font-bold text-slate-700">Vercel</span>
+              <div className="flex items-center gap-2 sm:gap-3 opacity-60 hover:opacity-100 transition-opacity">
+                <SiVercel size={28} color="#8B5CF6" />
+                <span className="text-base sm:text-lg lg:text-xl font-bold text-gray-400 hidden sm:inline">Vercel</span>
               </div>
             </div>
 
             {/* Duplicate set for seamless loop */}
-            <div className="flex gap-16 items-center shrink-0">
-              <div className="flex items-center gap-3">
-                <SiStripe size={32} color="#334155" />
-                <span className="text-xl font-bold text-slate-700">Stripe</span>
+            <div className="flex gap-8 sm:gap-12 lg:gap-16 items-center shrink-0">
+              <div className="flex items-center gap-2 sm:gap-3 opacity-60 hover:opacity-100 transition-opacity">
+                <SiStripe size={28} color="#8B5CF6" />
+                <span className="text-base sm:text-lg lg:text-xl font-bold text-gray-400 hidden sm:inline">Stripe</span>
               </div>
-              <div className="flex items-center gap-3">
-                <SiNotion size={32} color="#334155" />
-                <span className="text-xl font-bold text-slate-700">Notion</span>
+              <div className="flex items-center gap-2 sm:gap-3 opacity-60 hover:opacity-100 transition-opacity">
+                <SiNotion size={28} color="#8B5CF6" />
+                <span className="text-base sm:text-lg lg:text-xl font-bold text-gray-400 hidden sm:inline">Notion</span>
               </div>
-              <div className="flex items-center gap-3">
-                <SiSpotify size={32} color="#334155" />
-                <span className="text-xl font-bold text-slate-700">Spotify</span>
+              <div className="flex items-center gap-2 sm:gap-3 opacity-60 hover:opacity-100 transition-opacity">
+                <SiSpotify size={28} color="#8B5CF6" />
+                <span className="text-base sm:text-lg lg:text-xl font-bold text-gray-400 hidden sm:inline">Spotify</span>
               </div>
-              <div className="flex items-center gap-3">
-                <SiFigma size={32} color="#334155" />
-                <span className="text-xl font-bold text-slate-700">Figma</span>
+              <div className="flex items-center gap-2 sm:gap-3 opacity-60 hover:opacity-100 transition-opacity">
+                <SiFigma size={28} color="#8B5CF6" />
+                <span className="text-base sm:text-lg lg:text-xl font-bold text-gray-400 hidden sm:inline">Figma</span>
               </div>
-              <div className="flex items-center gap-3">
-                <SiDropbox size={32} color="#334155" />
-                <span className="text-xl font-bold text-slate-700">Dropbox</span>
+              <div className="flex items-center gap-2 sm:gap-3 opacity-60 hover:opacity-100 transition-opacity">
+                <SiDropbox size={28} color="#8B5CF6" />
+                <span className="text-base sm:text-lg lg:text-xl font-bold text-gray-400 hidden sm:inline">Dropbox</span>
               </div>
-              <div className="flex items-center gap-3">
-                <SiAsana size={32} color="#334155" />
-                <span className="text-xl font-bold text-slate-700">Asana</span>
+              <div className="flex items-center gap-2 sm:gap-3 opacity-60 hover:opacity-100 transition-opacity">
+                <SiAsana size={28} color="#8B5CF6" />
+                <span className="text-base sm:text-lg lg:text-xl font-bold text-gray-400 hidden sm:inline">Asana</span>
               </div>
-              <div className="flex items-center gap-3">
-                <SiSlack size={32} color="#334155" />
-                <span className="text-xl font-bold text-slate-700">Slack</span>
+              <div className="flex items-center gap-2 sm:gap-3 opacity-60 hover:opacity-100 transition-opacity">
+                <SiSlack size={28} color="#8B5CF6" />
+                <span className="text-base sm:text-lg lg:text-xl font-bold text-gray-400 hidden sm:inline">Slack</span>
               </div>
-              <div className="flex items-center gap-3">
-                <SiVercel size={32} color="#334155" />
-                <span className="text-xl font-bold text-slate-700">Vercel</span>
+              <div className="flex items-center gap-2 sm:gap-3 opacity-60 hover:opacity-100 transition-opacity">
+                <SiVercel size={28} color="#8B5CF6" />
+                <span className="text-base sm:text-lg lg:text-xl font-bold text-gray-400 hidden sm:inline">Vercel</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Section - Clean Style */}
-      <section className="bg-slate-50 py-24 px-6 border-t border-slate-100">
+      {/* Features Section - Three Blocks */}
+      <section className="bg-black py-16 sm:py-20 lg:py-24 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Everything you need to squash bugs</h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">Powerful tools designed for the modern developer community.</p>
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4">Three tools. One workspace.</h2>
+            <p className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto">
+              Everything your team needs to stay aligned, without the chaos.
+            </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
             {features.map((feature, i) => (
-              <div key={i} className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 group">
-                <div className="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-indigo-600 transition-colors">
-                  <feature.icon className="w-6 h-6 text-indigo-600 group-hover:text-white transition-colors" />
+              <div key={i} className="bg-white/5 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-white/10 hover:border-indigo-500/50 hover:bg-white/10 transition-all duration-300 group">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center mb-5 sm:mb-6 group-hover:scale-110 transition-transform">
+                  <feature.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">{feature.title}</h3>
-                <p className="text-slate-600 leading-relaxed text-sm">
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">{feature.title}</h3>
+                <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
                   {feature.description}
                 </p>
               </div>
@@ -1220,27 +1267,137 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
         </div>
       </section>
 
+      {/* How It Works Section */}
+      <section className="bg-black py-16 sm:py-20 lg:py-24 px-4 sm:px-6 border-t border-white/10">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4">Simple to adopt. Powerful to use.</h2>
+            <p className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto">
+              Get your team up and running in minutes, not weeks.
+            </p>
+          </div>
+          
+          <div className="space-y-8 sm:space-y-12">
+            {[
+              {
+                step: "01",
+                title: "Create your workspace",
+                description: "Sign up, invite your team, and customize your space. Import existing docs or start fresh.",
+                icon: Users
+              },
+              {
+                step: "02",
+                title: "Organize your knowledge",
+                description: "Structure documentation, set up discussion categories, and configure your update feed to match your workflow.",
+                icon: FileText
+              },
+              {
+                step: "03",
+                title: "Stay in sync",
+                description: "Your team collaborates in real-time. Search finds everything instantly. Context is never lost again.",
+                icon: Zap
+              }
+            ].map((step, i) => (
+              <div key={i} className="flex flex-col sm:flex-row gap-4 sm:gap-8 items-start">
+                <div className="flex items-center gap-4 sm:flex-col sm:items-center sm:gap-3 shrink-0">
+                  <div className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-indigo-400 to-purple-600">
+                    {step.step}
+                  </div>
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center">
+                    <step.icon className="w-5 h-5 sm:w-6 sm:h-6 text-indigo-400" />
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3">{step.title}</h3>
+                  <p className="text-sm sm:text-base text-gray-400 leading-relaxed">{step.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Use Case Section - For Team Managers */}
+      <section className="bg-black py-16 sm:py-20 lg:py-24 px-4 sm:px-6 border-t border-white/10">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 mb-4 sm:mb-6">
+                <Users className="w-3 h-3 sm:w-4 sm:h-4 text-purple-400" />
+                <span className="text-xs sm:text-sm font-semibold text-purple-300">For Engineering & Product Teams</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6">
+                Built for teams that ship fast.
+              </h2>
+              <p className="text-base sm:text-lg text-gray-400 mb-6 sm:mb-8 leading-relaxed">
+                Engineering managers, product leads, and team leads use GlitchHunt to keep their teams aligned without constant meetings or endless Slack threads.
+              </p>
+              <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
+                {[
+                  "Onboard new engineers in hours, not days",
+                  "Document decisions where discussions happen",
+                  "Track project updates without status meetings",
+                  "Searchable history of every decision and discussion"
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-green-400 shrink-0 mt-0.5" />
+                    <span className="text-sm sm:text-base text-gray-300">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <button 
+                onClick={onStartHunting}
+                className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:from-indigo-500 hover:to-purple-500 transition-all shadow-lg shadow-indigo-500/30 text-sm sm:text-base"
+              >
+                See it in action
+              </button>
+            </div>
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-2xl blur-2xl"></div>
+              <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8">
+                <div className="space-y-4 sm:space-y-6">
+                  {[
+                    { label: "Team alignment", value: "+89%", color: "from-green-400 to-emerald-500" },
+                    { label: "Time saved per week", value: "8.5 hrs", color: "from-blue-400 to-cyan-500" },
+                    { label: "Onboarding speed", value: "3x faster", color: "from-purple-400 to-pink-500" }
+                  ].map((metric, i) => (
+                    <div key={i} className="flex items-center justify-between p-3 sm:p-4 bg-white/5 rounded-xl border border-white/10">
+                      <span className="text-sm sm:text-base text-gray-400">{metric.label}</span>
+                      <span className={`text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${metric.color}`}>
+                        {metric.value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Product Screenshot Section */}
-      <section className="py-24 px-6 bg-white overflow-hidden">
+      <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 bg-black overflow-hidden border-t border-white/10">
         <div className="max-w-7xl mx-auto text-center">
-          <div className="mb-12">
-            <span className="text-indigo-600 font-bold tracking-wider uppercase text-sm">Product Preview</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2 mb-4">See how it works</h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">A clean, intuitive interface built for rapid bug reporting and community triage.</p>
+          <div className="mb-8 sm:mb-12">
+            <span className="text-indigo-400 font-bold tracking-wider uppercase text-xs sm:text-sm">Product Preview</span>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mt-2 mb-3 sm:mb-4">See the platform in action</h2>
+            <p className="text-sm sm:text-base lg:text-lg text-gray-400 max-w-2xl mx-auto">
+              Switch seamlessly between documentation, updates, and discussions. All in one beautiful interface.
+            </p>
           </div>
 
-          <div className="relative rounded-xl border border-slate-200 bg-slate-50 shadow-2xl overflow-hidden group max-w-7xl mx-auto h-[800px]">
+          <div className="relative rounded-xl border border-white/10 bg-black shadow-2xl overflow-hidden group max-w-7xl mx-auto h-[500px] sm:h-[600px] lg:h-[800px]">
             {/* Browser Chrome Placeholder */}
-            <div className="bg-white border-b border-slate-200 px-4 py-3 flex gap-4 items-center">
+            <div className="bg-white/5 backdrop-blur-sm border-b border-white/10 px-3 sm:px-4 py-2 sm:py-3 flex gap-3 sm:gap-4 items-center">
               <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-slate-200 group-hover:bg-red-400 transition-colors"></div>
-                <div className="w-3 h-3 rounded-full bg-slate-200 group-hover:bg-yellow-400 transition-colors"></div>
-                <div className="w-3 h-3 rounded-full bg-slate-200 group-hover:bg-green-400 transition-colors"></div>
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-white/20 group-hover:bg-red-400 transition-colors"></div>
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-white/20 group-hover:bg-yellow-400 transition-colors"></div>
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-white/20 group-hover:bg-green-400 transition-colors"></div>
               </div>
-              <div className="flex-1 bg-slate-50 px-3 py-1.5 rounded-lg text-xs text-slate-500 flex items-center justify-center border border-slate-200 font-mono">
-                glitchhunt.com/g/all
+              <div className="flex-1 bg-white/5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-[10px] sm:text-xs text-gray-400 flex items-center justify-center border border-white/10 font-mono">
+                app.glitchhunt.com/workspace
               </div>
-              <div className="w-16"></div>
+              <div className="w-12 sm:w-16"></div>
             </div>
 
             {/* Actual Dashboard UI Implementation */}
@@ -1250,6 +1407,194 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
           </div>
         </div>
       </section>
+
+      {/* Final CTA Section */}
+      <section className="bg-black py-16 sm:py-20 lg:py-24 px-4 sm:px-6 border-t border-white/10">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-3xl blur-3xl"></div>
+            <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 sm:p-12 lg:p-16">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-4 sm:mb-6">
+                Ready to unify your team?
+              </h2>
+              <p className="text-base sm:text-lg text-gray-400 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed">
+                Join the private beta and get lifetime access to all features. Limited spots available for early teams.
+              </p>
+              
+              {/* CTA Form */}
+              <div className="relative group w-full max-w-xl mx-auto mb-6">
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl opacity-30 group-hover:opacity-60 blur transition duration-500"></div>
+                <div className="relative flex flex-col sm:flex-row p-1.5 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 items-center gap-2">
+                  <div className="flex-1 flex items-center px-3 h-12 sm:h-14 w-full">
+                    <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 shrink-0 ml-1" />
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="name@company.com"
+                      className="w-full bg-transparent border-none px-3 py-2 text-white placeholder-gray-500 outline-none focus:ring-0 text-sm sm:text-base"
+                    />
+                  </div>
+                  <button
+                    onClick={handleStartHuntingClick}
+                    className="w-full sm:w-auto bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl font-semibold hover:from-indigo-500 hover:to-purple-500 transition-all shadow-lg shadow-indigo-500/30 flex items-center justify-center gap-2 whitespace-nowrap group"
+                  >
+                    Get Beta Access
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-gray-400">
+                <div className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-green-400" />
+                  <span>Free for first 100 teams</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-green-400" />
+                  <span>No credit card required</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-green-400" />
+                  <span>Setup in 5 minutes</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 };
+
+// Animated Platform Demo Component
+const AnimatedPlatformDemo: React.FC<{ currentView: ViewType, setCurrentView: (view: ViewType) => void }> = ({ currentView, setCurrentView }) => {
+  const [autoRotate, setAutoRotate] = useState(true);
+
+  // Auto-rotate through views
+  React.useEffect(() => {
+    if (!autoRotate) return;
+    
+    const interval = setInterval(() => {
+      setCurrentView(current => {
+        if (current === 'confluence') return 'reddit';
+        if (current === 'reddit') return 'discourse';
+        return 'confluence';
+      });
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [autoRotate, setCurrentView]);
+
+  const views = [
+    { id: 'confluence' as ViewType, label: 'Docs', icon: FileText, color: 'from-blue-500 to-cyan-500' },
+    { id: 'reddit' as ViewType, label: 'Updates', icon: TrendingUp, color: 'from-indigo-500 to-purple-500' },
+    { id: 'discourse' as ViewType, label: 'Discussions', icon: MessageSquare, color: 'from-purple-500 to-pink-500' }
+  ];
+
+  return (
+    <div className="space-y-4 sm:space-y-6">
+      {/* View Switcher Pills */}
+      <div className="flex justify-center gap-2 sm:gap-3">
+        {views.map(view => {
+          const Icon = view.icon;
+          return (
+            <button
+              key={view.id}
+              onClick={() => {
+                setCurrentView(view.id);
+                setAutoRotate(false);
+              }}
+              className={`flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl font-semibold text-xs sm:text-sm transition-all ${
+                currentView === view.id
+                  ? `bg-gradient-to-r ${view.color} text-white shadow-lg`
+                  : 'bg-white/5 text-gray-400 hover:bg-white/10 border border-white/10'
+              }`}
+            >
+              <Icon className="w-3 h-3 sm:w-4 sm:h-4" />
+              <span className="hidden sm:inline">{view.label}</span>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Animated Content Cards */}
+      <div className="relative h-[300px] sm:h-[400px] lg:h-[500px] rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm overflow-hidden">
+        <div className="absolute inset-0 flex items-center justify-center p-4 sm:p-8">
+          {currentView === 'confluence' && (
+            <div className="w-full h-full animate-fadeIn">
+              <ConfluencePreview />
+            </div>
+          )}
+          {currentView === 'reddit' && (
+            <div className="w-full h-full animate-fadeIn">
+              <UpdatesPreview />
+            </div>
+          )}
+          {currentView === 'discourse' && (
+            <div className="w-full h-full animate-fadeIn">
+              <DiscussionsPreview />
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Preview Components for Each View Type
+const ConfluencePreview = () => (
+  <div className="w-full h-full bg-white/10 rounded-xl p-4 sm:p-6 space-y-3 sm:space-y-4">
+    <div className="flex items-center gap-3 mb-4">
+      <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400" />
+      <div className="text-base sm:text-lg font-bold text-white">Team Documentation</div>
+    </div>
+    {[1, 2, 3, 4].map(i => (
+      <div key={i} className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-colors">
+        <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+        <div className="flex-1 h-2 sm:h-3 bg-white/20 rounded" style={{ width: `${60 + i * 10}%` }}></div>
+      </div>
+    ))}
+  </div>
+);
+
+const UpdatesPreview = () => (
+  <div className="w-full h-full bg-white/10 rounded-xl p-4 sm:p-6 space-y-3 sm:space-y-4">
+    <div className="flex items-center gap-3 mb-4">
+      <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-indigo-400" />
+      <div className="text-base sm:text-lg font-bold text-white">Team Updates</div>
+    </div>
+    {[1, 2, 3].map(i => (
+      <div key={i} className="p-3 sm:p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors">
+        <div className="flex items-center gap-2 mb-2">
+          <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-indigo-400/20"></div>
+          <div className="h-2 bg-white/20 rounded flex-1 max-w-[100px]"></div>
+        </div>
+        <div className="space-y-1.5 sm:space-y-2">
+          <div className="h-2 sm:h-3 bg-white/30 rounded w-full"></div>
+          <div className="h-2 sm:h-3 bg-white/20 rounded w-3/4"></div>
+        </div>
+      </div>
+    ))}
+  </div>
+);
+
+const DiscussionsPreview = () => (
+  <div className="w-full h-full bg-white/10 rounded-xl p-4 sm:p-6 space-y-3 sm:space-y-4">
+    <div className="flex items-center gap-3 mb-4">
+      <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6 text-purple-400" />
+      <div className="text-base sm:text-lg font-bold text-white">Discussions</div>
+    </div>
+    {[1, 2, 3].map(i => (
+      <div key={i} className="p-3 sm:p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors">
+        <div className="flex items-start gap-3">
+          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-purple-400/20 shrink-0"></div>
+          <div className="flex-1 space-y-1.5 sm:space-y-2">
+            <div className="h-2 sm:h-3 bg-white/30 rounded w-full"></div>
+            <div className="h-2 bg-white/20 rounded w-2/3"></div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+);

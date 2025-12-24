@@ -9,36 +9,36 @@ interface LayoutProps {
 
 export const Layout: React.FC<LayoutProps> = ({ children, onNavigate, onRegister }) => {
   return (
-    <div className="bg-white min-h-screen font-sans flex flex-col">
+    <div className="bg-black min-h-screen font-sans flex flex-col">
       {/* Navbar */}
-      <nav className="max-w-6xl mx-auto px-6 py-6 flex justify-between items-center w-full">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 flex justify-between items-center w-full border-b border-white/10">
         <button 
           onClick={() => {
             trackNavigation('Home');
             onNavigate('home');
           }} 
-          className="text-2xl font-bold text-indigo-600 hover:opacity-80 transition-opacity"
+          className="text-xl sm:text-2xl font-bold text-white hover:opacity-80 transition-opacity"
         >
           GlitchHunt
         </button>
-        <div className="hidden md:flex gap-8 text-gray-600 font-medium">
+        <div className="hidden md:flex gap-6 lg:gap-8 text-gray-400 font-medium text-sm">
           <button onClick={() => {
             trackNavigation('Product');
             onNavigate('product');
-          }} className="hover:text-indigo-600 transition-colors">Product</button>
+          }} className="hover:text-white transition-colors">Product</button>
           <button onClick={() => {
             trackNavigation('Solutions');
             onNavigate('solutions');
-          }} className="hover:text-indigo-600 transition-colors">Solutions</button>
+          }} className="hover:text-white transition-colors">Solutions</button>
         </div>
         <button 
           onClick={() => {
             trackButtonClick('Register', 'Navbar');
             onRegister();
           }}
-          className="text-indigo-600 font-semibold hover:bg-indigo-50 px-4 py-2 rounded-lg transition-colors border border-transparent hover:border-indigo-100"
+          className="text-sm sm:text-base bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold hover:from-indigo-500 hover:to-purple-500 px-4 sm:px-6 py-2 rounded-lg transition-all shadow-lg shadow-indigo-500/20"
         >
-          Register
+          Get Early Access
         </button>
       </nav>
 
@@ -48,23 +48,23 @@ export const Layout: React.FC<LayoutProps> = ({ children, onNavigate, onRegister
       </div>
 
       {/* Footer */}
-      <footer className="bg-white py-12 px-6 border-t border-slate-200 mt-auto">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <footer className="bg-black py-12 px-4 sm:px-6 border-t border-white/10 mt-auto">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-2">
-            <span className="text-xl font-bold text-indigo-600">GlitchHunt</span>
-            <span className="text-sm text-slate-500">© 2025 GlitchHunt Inc.</span>
+            <span className="text-lg sm:text-xl font-bold text-white">GlitchHunt</span>
+            <span className="text-xs sm:text-sm text-gray-500">© 2025 GlitchHunt Inc.</span>
           </div>
-          <div className="flex gap-8 text-sm text-slate-600 font-medium">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-8 text-xs sm:text-sm text-gray-400 font-medium">
              <button onClick={() => {
                trackNavigation('Privacy Policy');
                onNavigate('privacy');
-             }} className="hover:text-indigo-600 transition-colors">Privacy Policy</button>
+             }} className="hover:text-white transition-colors">Privacy Policy</button>
              <button onClick={() => {
                trackNavigation('Terms of Service');
                onNavigate('terms');
-             }} className="hover:text-indigo-600 transition-colors">Terms of Service</button>
-             <a href="#" onClick={() => trackButtonClick('Twitter', 'Footer')} className="hover:text-indigo-600 transition-colors">Twitter</a>
-             <a href="#" onClick={() => trackButtonClick('GitHub', 'Footer')} className="hover:text-indigo-600 transition-colors">GitHub</a>
+             }} className="hover:text-white transition-colors">Terms of Service</button>
+             <a href="#" onClick={() => trackButtonClick('Twitter', 'Footer')} className="hover:text-white transition-colors">Twitter</a>
+             <a href="#" onClick={() => trackButtonClick('GitHub', 'Footer')} className="hover:text-white transition-colors">GitHub</a>
           </div>
         </div>
       </footer>
