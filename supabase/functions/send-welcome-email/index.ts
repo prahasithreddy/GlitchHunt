@@ -126,7 +126,7 @@ serve(async (req) => {
         Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: "GlitchHunt <onboarding@glitchhunt.com>", // Update with your verified domain
+        from: "GlitchHunt <onboarding@resend.dev>", // Update with your verified domain
         to: [email],
         subject: "Welcome to GlitchHunt - You're In! 🎯",
         html: emailHtml,
