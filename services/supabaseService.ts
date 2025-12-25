@@ -57,6 +57,15 @@ export const saveRegistration = async (
       };
     }
 
+    // Send welcome email after successful registration
+    try {
+      await sendWelcomeEmail(data.name, data.email);
+    } catch (emailError) {
+      // Log email error but don't fail the registration
+      console.error('Failed to send welcome email:', emailError);
+      // Registration was successful, so we still return success
+    }
+
     return { success: true };
   } catch (error) {
     console.error('Registration error:', error);
@@ -66,5 +75,29 @@ export const saveRegistration = async (
     };
   }
 };
+
+// Function to send welcome email via Supabase Edge Function
+export const sendWelcomeEmail = async (name: string, email: string): Promise<void> => {
+  if (!supabase) {
+    console.warn('Supabase client not initialized. Email will not be sent.');
+    return;
+  }
+
+  try {
+    const { data, error } = await supabase.functions.invoke('send-welcome-email', {
+      body: { name, email },
+    });
+
+    if (error) {
+      throw error;
+    }
+
+    console.log('Welcome email sent successfully:', data);
+  } catch (error) {
+    console.error('Error invoking send-welcome-email function:', error);
+    throw error;
+  }
+};
+
 
 
