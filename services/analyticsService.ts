@@ -64,3 +64,4 @@ export const trackRegistration = (success: boolean, referralSource?: string) => 
 export const trackNavigation = (destination: string) => {
   trackEvent('Navigation', 'Click', destination);
 };
+

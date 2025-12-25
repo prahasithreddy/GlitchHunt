@@ -42,3 +42,4 @@ CREATE POLICY "Allow authenticated reads" ON early_registrations
 -- Run this to verify the table was created correctly
 -- SELECT * FROM early_registrations;
 
+

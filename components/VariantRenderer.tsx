@@ -206,9 +206,12 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
         {/* View Selector Dropdown */}
         <div className="p-3 md:p-4 border-b border-slate-200">
           <div className="relative mb-3">
+            {/* Pulsing ring animation to draw attention */}
+            <div className="absolute -inset-1 bg-indigo-500 rounded-lg opacity-20 animate-pulse"></div>
+
             <button
               onClick={() => setIsViewDropdownOpen(!isViewDropdownOpen)}
-              className="w-full flex items-center justify-between p-2 md:p-3 bg-slate-50 hover:bg-slate-100 rounded-lg border border-slate-200 transition-colors"
+              className="relative w-full flex items-center justify-between p-2 md:p-3 bg-slate-50 hover:bg-slate-100 rounded-lg border-2 border-indigo-500 transition-all shadow-lg shadow-indigo-500/20"
             >
               <div className="flex items-center gap-2 md:gap-3">
                 <Icon className="w-4 h-4 md:w-5 md:h-5 text-indigo-600" />
@@ -216,8 +219,13 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
                   {currentViewOption?.label.split(' ')[0]}
                 </span>
               </div>
-              <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform hidden md:block ${isViewDropdownOpen ? 'rotate-180' : ''}`} />
+              <ChevronDown className={`w-4 h-4 text-indigo-600 transition-transform hidden md:block ${isViewDropdownOpen ? 'rotate-180' : ''}`} />
             </button>
+            
+            {/* Tooltip hint below the button */}
+            <div className="hidden md:flex items-center justify-center gap-1 mt-2 text-[10px] text-indigo-600 font-semibold animate-pulse">
+              <span>👆 Click to switch views</span>
+            </div>
 
             {isViewDropdownOpen && (
               <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-slate-200 rounded-lg shadow-xl z-50 overflow-hidden">
@@ -1384,6 +1392,11 @@ export const VariantRenderer: React.FC<VariantRendererProps> = ({ email, setEmai
             <p className="text-sm sm:text-base lg:text-lg text-gray-400 max-w-2xl mx-auto">
               Switch seamlessly between documentation, updates, and discussions. All in one beautiful interface.
             </p>
+            <div className="mt-4 flex items-center justify-center gap-2 text-sm text-indigo-400 animate-pulse">
+              <ArrowRight className="w-4 h-4 rotate-[-90deg]" />
+              <span className="font-semibold">Click the dropdown below to explore different views</span>
+              <ArrowRight className="w-4 h-4 rotate-[-90deg]" />
+            </div>
           </div>
 
           <div className="relative rounded-xl border border-white/10 bg-black shadow-2xl overflow-hidden group max-w-7xl mx-auto h-[500px] sm:h-[600px] lg:h-[800px]">
@@ -1543,58 +1556,211 @@ const AnimatedPlatformDemo: React.FC<{ currentView: ViewType, setCurrentView: (v
 };
 
 // Preview Components for Each View Type
-const ConfluencePreview = () => (
-  <div className="w-full h-full bg-white/10 rounded-xl p-4 sm:p-6 space-y-3 sm:space-y-4">
-    <div className="flex items-center gap-3 mb-4">
-      <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400" />
-      <div className="text-base sm:text-lg font-bold text-white">Team Documentation</div>
-    </div>
-    {[1, 2, 3, 4].map(i => (
-      <div key={i} className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-colors">
-        <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-        <div className="flex-1 h-2 sm:h-3 bg-white/20 rounded" style={{ width: `${60 + i * 10}%` }}></div>
-      </div>
-    ))}
-  </div>
-);
+const ConfluencePreview = () => {
+  const mockDocs = [
+    { 
+      icon: '📚',
+      title: 'Getting Started Guide',
+      description: 'Everything you need to know to start using the platform',
+      lastUpdated: '2 days ago',
+      views: 234
+    },
+    { 
+      icon: '🔧',
+      title: 'API Documentation',
+      description: 'Complete reference for REST API endpoints and webhooks',
+      lastUpdated: '1 week ago',
+      views: 567
+    },
+    { 
+      icon: '🎨',
+      title: 'Design System',
+      description: 'Components, colors, and guidelines for consistent UI',
+      lastUpdated: '3 days ago',
+      views: 189
+    },
+    { 
+      icon: '🐛',
+      title: 'Bug Reporting Guide',
+      description: 'How to report bugs effectively with templates',
+      lastUpdated: '5 days ago',
+      views: 412
+    }
+  ];
 
-const UpdatesPreview = () => (
-  <div className="w-full h-full bg-white/10 rounded-xl p-4 sm:p-6 space-y-3 sm:space-y-4">
-    <div className="flex items-center gap-3 mb-4">
-      <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-indigo-400" />
-      <div className="text-base sm:text-lg font-bold text-white">Team Updates</div>
-    </div>
-    {[1, 2, 3].map(i => (
-      <div key={i} className="p-3 sm:p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors">
-        <div className="flex items-center gap-2 mb-2">
-          <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-indigo-400/20"></div>
-          <div className="h-2 bg-white/20 rounded flex-1 max-w-[100px]"></div>
-        </div>
-        <div className="space-y-1.5 sm:space-y-2">
-          <div className="h-2 sm:h-3 bg-white/30 rounded w-full"></div>
-          <div className="h-2 sm:h-3 bg-white/20 rounded w-3/4"></div>
-        </div>
+  return (
+    <div className="w-full h-full bg-white/10 rounded-xl p-4 sm:p-6 space-y-3 overflow-y-auto">
+      <div className="flex items-center gap-3 mb-4">
+        <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400" />
+        <div className="text-base sm:text-lg font-bold text-white">Team Documentation</div>
       </div>
-    ))}
-  </div>
-);
-
-const DiscussionsPreview = () => (
-  <div className="w-full h-full bg-white/10 rounded-xl p-4 sm:p-6 space-y-3 sm:space-y-4">
-    <div className="flex items-center gap-3 mb-4">
-      <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6 text-purple-400" />
-      <div className="text-base sm:text-lg font-bold text-white">Discussions</div>
-    </div>
-    {[1, 2, 3].map(i => (
-      <div key={i} className="p-3 sm:p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors">
-        <div className="flex items-start gap-3">
-          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-purple-400/20 shrink-0"></div>
-          <div className="flex-1 space-y-1.5 sm:space-y-2">
-            <div className="h-2 sm:h-3 bg-white/30 rounded w-full"></div>
-            <div className="h-2 bg-white/20 rounded w-2/3"></div>
+      {mockDocs.map((doc, i) => (
+        <div key={i} className="flex items-start gap-2 sm:gap-3 p-3 sm:p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors border border-white/5 cursor-pointer">
+          <div className="text-xl sm:text-2xl shrink-0">{doc.icon}</div>
+          <div className="flex-1 min-w-0">
+            <div className="text-white text-xs sm:text-sm font-semibold mb-1">{doc.title}</div>
+            <div className="text-gray-300 text-[10px] sm:text-xs leading-relaxed mb-2">{doc.description}</div>
+            <div className="flex items-center gap-3 text-gray-400 text-[10px] sm:text-xs">
+              <div className="flex items-center gap-1">
+                <Clock className="w-3 h-3" />
+                <span>{doc.lastUpdated}</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <Eye className="w-3 h-3" />
+                <span>{doc.views} views</span>
+              </div>
+            </div>
           </div>
         </div>
+      ))}
+    </div>
+  );
+};
+
+const UpdatesPreview = () => {
+  const mockUpdates = [
+    { 
+      author: 'Sarah Chen', 
+      avatar: 'SC',
+      time: '2h ago',
+      title: 'Just shipped v2.3 with dark mode support! 🎉',
+      description: 'The team crushed it this sprint. Check out the new features.',
+      reactions: 24,
+      comments: 8
+    },
+    { 
+      author: 'Mike Torres', 
+      avatar: 'MT',
+      time: '5h ago',
+      title: 'Q1 roadmap is live in docs',
+      description: 'We\'re focusing on API performance and mobile improvements.',
+      reactions: 16,
+      comments: 12
+    },
+    { 
+      author: 'Alex Kumar', 
+      avatar: 'AK',
+      time: '1d ago',
+      title: 'New design system components released',
+      description: 'Check Figma for the updated button and form styles.',
+      reactions: 31,
+      comments: 5
+    }
+  ];
+
+  return (
+    <div className="w-full h-full bg-white/10 rounded-xl p-4 sm:p-6 space-y-3 overflow-y-auto">
+      <div className="flex items-center gap-3 mb-4">
+        <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-indigo-400" />
+        <div className="text-base sm:text-lg font-bold text-white">Team Updates</div>
       </div>
-    ))}
-  </div>
-);
+      {mockUpdates.map((update, i) => (
+        <div key={i} className="p-3 sm:p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors border border-white/5">
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center text-white text-[10px] sm:text-xs font-bold">
+              {update.avatar}
+            </div>
+            <div className="flex-1">
+              <div className="text-white text-xs sm:text-sm font-semibold">{update.author}</div>
+              <div className="text-gray-400 text-[10px] sm:text-xs">{update.time}</div>
+            </div>
+          </div>
+          <div className="space-y-1.5 sm:space-y-2">
+            <div className="text-white text-xs sm:text-sm font-medium leading-snug">{update.title}</div>
+            <div className="text-gray-300 text-[10px] sm:text-xs leading-relaxed">{update.description}</div>
+            <div className="flex items-center gap-3 pt-2">
+              <div className="flex items-center gap-1 text-gray-400 text-[10px] sm:text-xs">
+                <ThumbsUp className="w-3 h-3" />
+                <span>{update.reactions}</span>
+              </div>
+              <div className="flex items-center gap-1 text-gray-400 text-[10px] sm:text-xs">
+                <MessageSquare className="w-3 h-3" />
+                <span>{update.comments}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const DiscussionsPreview = () => {
+  const mockDiscussions = [
+    { 
+      author: 'Rachel Park',
+      avatar: 'RP',
+      category: 'Feature Requests',
+      categoryColor: 'bg-green-500',
+      title: 'Add export to CSV functionality',
+      replies: 12,
+      views: 234,
+      isSolved: false,
+      time: '3h ago'
+    },
+    { 
+      author: 'Tom Wilson',
+      avatar: 'TW',
+      category: 'Bug Reports',
+      categoryColor: 'bg-red-500',
+      title: 'Login timeout issue on mobile',
+      replies: 8,
+      views: 156,
+      isSolved: true,
+      time: '1d ago'
+    },
+    { 
+      author: 'Lisa Chen',
+      avatar: 'LC',
+      category: 'General',
+      categoryColor: 'bg-blue-500',
+      title: 'Best practices for team onboarding?',
+      replies: 23,
+      views: 445,
+      isSolved: false,
+      time: '2d ago'
+    }
+  ];
+
+  return (
+    <div className="w-full h-full bg-white/10 rounded-xl p-4 sm:p-6 space-y-3 overflow-y-auto">
+      <div className="flex items-center gap-3 mb-4">
+        <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6 text-purple-400" />
+        <div className="text-base sm:text-lg font-bold text-white">Discussions</div>
+      </div>
+      {mockDiscussions.map((discussion, i) => (
+        <div key={i} className="p-3 sm:p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors border border-white/5 cursor-pointer">
+          <div className="flex items-start gap-3">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center text-white text-[10px] sm:text-xs font-bold shrink-0">
+              {discussion.avatar}
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-2 mb-1">
+                <div className={`w-2 h-2 rounded-full ${discussion.categoryColor}`}></div>
+                <span className="text-gray-400 text-[10px] sm:text-xs">{discussion.category}</span>
+                {discussion.isSolved && (
+                  <span className="text-[10px] px-1.5 py-0.5 bg-green-500/20 text-green-400 rounded-full font-semibold">Solved</span>
+                )}
+              </div>
+              <div className="text-white text-xs sm:text-sm font-semibold mb-1">{discussion.title}</div>
+              <div className="flex items-center gap-3 text-gray-400 text-[10px] sm:text-xs">
+                <span>{discussion.author}</span>
+                <span>•</span>
+                <span>{discussion.time}</span>
+                <span>•</span>
+                <div className="flex items-center gap-1">
+                  <MessageSquare className="w-3 h-3" />
+                  <span>{discussion.replies}</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <Eye className="w-3 h-3" />
+                  <span>{discussion.views}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
